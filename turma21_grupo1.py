@@ -7,17 +7,8 @@ import random
 from criptografiaChave import criptografia_Mensagem, criptografia_Letra
 from criptografiaChaveA import criptografia_Letra_A, criptografia_Mensagem_A 
 from decodificarChave import decodificar_Letra, decodificar_Mensagem
+from decodificarChaveA import decifrar_chave
 
-alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g','h', 'i', 'j', 'k', 'l', 'm','n', 
-'o','p','q','r','s','t','u','v','w','x','y','z']
-
-print(f'Criptografia')
-print('''Opções: 
-[ 1 ] Criptografar Mensagem (com chave)
-[ 2 ] Decodificar Mensagem (com chave)
-[ 3 ] Criptografar Mensagem (sem chave)
-[ 4 ] Decodificar Mensagem (sem chave)
-[ 5 ] Sair''')
 
 def continuar():
     continuar = input("\nVocê deseja continuar? (S/N): ").strip()[0].upper()
@@ -30,6 +21,14 @@ def continuar():
       quit("Saindo do programa...")
 
 while True:
+    print(f'\nCriptografia Tech')
+    print('''Opções: 
+    [ 1 ] Criptografar Mensagem (com chave)
+    [ 2 ] Decodificar Mensagem (com chave)
+    [ 3 ] Criptografar Mensagem (sem chave)
+    [ 4 ] Decodificar Mensagem (sem chave)
+    [ 5 ] Sair''')
+
     opcao = int(input('Escolha a opção: '))
     if opcao not in range(1,6):
       print('Opçõa inválida, tente novamente')
@@ -87,7 +86,7 @@ while True:
           criptografia_Letra_A(letra,chave)
           continuar()
         elif tipo == 'M':
-          mensagem = str(input('Me fale a menssagem? '))
+          mensagem = str(input('Me fale a mensagem: '))
           chave = random.randint(0,25)
           print("Mensagem Original: " + mensagem)
           print("A chave é: ", chave)
@@ -96,4 +95,7 @@ while True:
           continuar()
           print("\n")
     elif opcao == 4:
-      print("Opção não desenvolvida! \U0001f641")
+      mensagem = str(input('Me fale a mensagem: '))
+      decifrar_chave(mensagem.lower())
+      print()
+      continuar()
